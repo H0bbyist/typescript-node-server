@@ -4,11 +4,12 @@ const app = express()
 const port = 9000
 
 app.get('/', (req, res) => {
+    res.status(200)
     res.send('its alive!')
 })
 
-app.get('/test', (req, res) => {
-    res.send('its testing alive!')
+app.get('/data', (req, res) => {
+    res.send('heres your data')
 })
 
 app.listen(port, () => {
