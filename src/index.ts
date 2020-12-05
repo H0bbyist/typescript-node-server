@@ -1,17 +1,11 @@
-import express from 'express'
+import server from './server';
 
-const app = express()
-const port = 9000
+const port = parseInt(process.env.PORT || '9000');
 
-app.get('/', (req, res) => {
-    res.status(200)
-    res.send('its alive!')
-})
+const starter = new server().start(port)
+  .then(port => console.log(`Running on port ${port}`))
+  .catch(error => {
+    console.log(error)
+  });
 
-app.get('/data', (req, res) => {
-    res.send('heres your data')
-})
-
-app.listen(port, () => {
-    return console.log(`server is listening on port ${port}`)
-})
+export default starter;
